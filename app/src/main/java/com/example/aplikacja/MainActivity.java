@@ -46,7 +46,7 @@ LicznikViewModel licznikViewModel;
                 textView.setText(""+licznikViewModel.getLicznik());
             }
         });
-
+//czemu nic nie dziala zupdatujj sie w konuc
     }
 
 
