@@ -2,14 +2,21 @@ package com.example.aplikacja;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+int licznik = 0;
+Button button;
+TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +25,69 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Log.i("CYKL ZYCIA","urouchomiona metoda onCreate");
+        button = findViewById(R.id.button);
+        textView = findViewById(R.id.textView);
+
+
+        if(savedInstanceState != null){
+            licznik = savedInstanceState.getInt("Licznik");
+            textView.setText(""+licznik);
+        }
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                licznik++;
+                textView.setText(""+licznik);
+            }
+        });
 
     }
+
+
+    //Cykle zycia//
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Log.i("CYKL ZYCIA","Uruchomiono metode onStart");
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.i("CYKL ZYCIA","Uruchomiono metode onResume");
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Log.i("CYKL ZYCIA","Uruchomiono metode onPause");
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Log.i("CYKL ZYCIA","Uruchomiono metode onStop");
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.i("CYKL ZYCIA","Uruchomiono metode onDestroy");
+    }
+
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        Log.i("CYKL ZYCIA","Uruchomiono metode onRestart");
+
+    }
+    @Override
+    protected  void onSaveInstanceState(@NonNull Bundle outState){
+        super.onSaveInstanceState(outState);
+        Log.i("CYKL ZYCIA","Uruchomiono metode onSaveInstanceState");
+        outState.putInt("Licznik", licznik);
+    }
+
+
 }
